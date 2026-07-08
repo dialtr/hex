@@ -1,4 +1,4 @@
 // Copyright (C) 2026 The hex authors. All rights reserved.
-#include "hex/hex.h"
+#include "hex/record.h"
 
-int Add(int a, int b) { return a + b; }
+namespace hex {}  // namespace hex
