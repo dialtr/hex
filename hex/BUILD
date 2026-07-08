@@ -41,6 +41,7 @@ cc_test(
     ":read_utility",
     "@googletest//:gtest_main",
   ],
+  timeout = "short",
 )
 
 cc_test(
@@ -50,5 +51,6 @@ cc_test(
     ":record",
     "@googletest//:gtest_main",
   ],
+  timeout = "short",
 )
 

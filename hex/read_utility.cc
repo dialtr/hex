@@ -17,9 +17,8 @@ absl::Status ReadStartByte(std::istream& input) {
       return absl::ResourceExhaustedError(
           "ReadStartByte: reached the end of the input stream before "
           "reading ':'");
-      if (c == ':') {
-        break;
-      }
+    } else if (c == ':') {
+      break;
     }
   }
   return absl::OkStatus();

@@ -3,4 +3,14 @@
 
 #include <gtest/gtest.h>
 
-TEST(ReadUtilityTest, Foo) {}
+#include <sstream>
+#include <string>
+
+#include "absl/status/status.h"
+
+TEST(ReadUtilityTest, ReadStartByte_FindsStartByte) {
+  std::stringstream line("    :");
+  absl::Status status;
+  status = hex::ReadStartByte(line);
+  EXPECT_EQ(absl::OkStatus(), status);
+}
