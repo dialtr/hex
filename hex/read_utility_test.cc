@@ -8,6 +8,8 @@
 
 #include "absl/status/status.h"
 
+TEST(ReadUtility_test, ReadHexByte_ReadsSuccessfully) {}
+
 TEST(ReadUtilityTest, ReadStartByte_FindsStartByte) {
   std::stringstream line("    :x");
   const absl::Status status = hex::ReadStartByte(line);
