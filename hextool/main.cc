@@ -1,5 +1,6 @@
 // Copyright (C) 2026 The hex authors. All rights reserved.
 #include <iostream>
+
 #include "hex/hex.h"
 
 using std::cout;

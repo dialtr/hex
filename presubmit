@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Format code
+./tools/format
+
+# Run cpplint
+./tools/lint
+
