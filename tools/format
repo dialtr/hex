@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if ls *.cc >/dev/null 2>&1; then 
+  clang-format -style=Google -i *.cc
+fi
+
+if ls *.h >/dev/null 2>&1; then
+	clang-format -style=Google -i *.h
+fi
