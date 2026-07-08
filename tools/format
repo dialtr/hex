@@ -1,9 +1,11 @@
 #!/bin/bash
 
-if ls *.cc >/dev/null 2>&1; then 
-  clang-format -style=Google -i *.cc
-fi
+for dir in */; do
+  if ls $dir/*.cc >/dev/null 2>&1; then 
+    clang-format -style=Google -i $dir/*.cc
+  fi
 
-if ls *.h >/dev/null 2>&1; then
-	clang-format -style=Google -i *.h
-fi
+  if ls $dir/*.h >/dev/null 2>&1; then
+    clang-format -style=Google -i $dir/*.h
+  fi
+done

@@ -1,9 +1,11 @@
 #!/bin/bash
 
-if ls *.cc >/dev/null 2>&1; then
-  cpplint *.cc
-fi
+for dir in */; do
+  if ls $dir/*.cc >/dev/null 2>&1; then
+    cpplint $dir/*.cc
+  fi
 
-if ls *.h >/dev/null 2>&1; then
-	cpplint *.h
-fi
+  if ls $dir/*.h >/dev/null 2>&1; then
+	  cpplint $dir/*.h
+  fi
+done

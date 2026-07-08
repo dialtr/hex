@@ -20,7 +20,7 @@ cc_test(
   name = "hex_test",
   srcs = ["hex_test.cc"],
   deps = [
-    ":libhex",
+    ":hex",
     "@googletest//:gtest_main",
   ],
 )
