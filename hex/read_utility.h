@@ -31,6 +31,12 @@ absl::Status ReadStartByte(std::istream& input);
 // Returns absl::ResourceExhaustedError if EOF is reached.
 absl::StatusOr<uint8_t> ReadHexByte(std::istream& input);
 
+// Read all whitespace including carriage return / newline.
+//
+// Returns absl::OkStatus on success.
+// Returns absl::ResourceExhausted if EOF is reached.
+absl::Status ReadEndOfLine(std::istream& input);
+
 }  // namespace hex
 
 #endif  // HEX_READ_UTILITY_H_
