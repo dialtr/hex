@@ -84,23 +84,4 @@ absl::StatusOr<uint8_t> ReadHexByte(std::istream& input) {
   return byte;
 }
 
-absl::Status ReadEndOfLine(std::istream& input) {
-  for (;;) {
-    const int c = input.get();
-    if (c == std::char_traits<char>::eof()) {
-      return absl::ResourceExhaustedError(
-          "ReadEndOfLine: reached the end of the input stream before "
-          "reading a hex character");
-    }
-    // If a space character...
-    if (isspace(c)) {
-      // ...continue reading more.
-      continue;
-    }
-    // We read a non-space. Put it back and return.
-    input.putback(c);
-    return absl::OkStatus();
-  }
-}
-
 }  // namespace hex
