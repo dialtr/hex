@@ -20,6 +20,9 @@ class Stream : public StreamInterface {
 
   // Read the next character from the stream, advancing the position.
   char Next() override;
+
+  // Return 'true' if we've reached the end of the stream.
+  bool EndOfStream() override;
 };
 
 }  // namespace hex

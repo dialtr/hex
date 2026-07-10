@@ -13,4 +13,6 @@ char Stream::Peek() { return '\0'; }
 
 char Stream::Next() { return '\0'; }
 
+bool Stream::EndOfStream() { return true; }
+
 }  // namespace hex

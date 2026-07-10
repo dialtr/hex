@@ -26,6 +26,9 @@ class StreamInterface {
 
   // Read the next character from the stream, advancing the position.
   virtual char Next() = 0;
+
+  // Returns true if the end of the stream has been reached.
+  virtual bool EndOfStream() = 0;
 };
 
 }  // namespace hex
