@@ -5,6 +5,7 @@ cc_library(
   hdrs = [ "read_utility.h" ],
   srcs = [ "read_utility.cc" ],
   deps = [
+    "@abseil-cpp//absl/status:status",
     "@abseil-cpp//absl/status:statusor",
     "@abseil-cpp//absl/strings",
     "@abseil-cpp//absl/log:check",
@@ -16,6 +17,7 @@ cc_library(
   hdrs = [ "record.h" ],
   srcs = [ "record.cc" ],
   deps = [
+    "@abseil-cpp//absl/status:status",
     "@abseil-cpp//absl/status:statusor",
     "@abseil-cpp//absl/strings",
     "@abseil-cpp//absl/log:check",
@@ -23,9 +25,25 @@ cc_library(
 )
 
 cc_library(
+  name = "stream",
+  hdrs = [
+    "stream.h",
+    "stream_interface.h",
+  ],
+  srcs = [
+    "stream.cc"
+  ],
+  deps = [
+    "@abseil-cpp//absl/status:status",
+    "@abseil-cpp//absl/status:statusor",
+  ],
+)
+
+cc_library(
   visibility = [ "//visibility:public" ],
   name = "hex",
   deps = [
+    "@abseil-cpp//absl/status:status",
     "@abseil-cpp//absl/status:statusor",
     "@abseil-cpp//absl/strings",
     "@abseil-cpp//absl/log:check",
@@ -49,6 +67,16 @@ cc_test(
   srcs = ["record_test.cc"],
   deps = [
     ":record",
+    "@googletest//:gtest_main",
+  ],
+  timeout = "short",
+)
+
+cc_test(
+  name = "stream_test",
+  srcs = ["stream_test.cc"],
+  deps = [
+    ":stream",
     "@googletest//:gtest_main",
   ],
   timeout = "short",
