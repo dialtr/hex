@@ -12,6 +12,9 @@ struct Position {
   size_t offset = 0;
   size_t line = 1;
   size_t column = 1;
+
+  // Implement comparison.
+  auto operator<=>(const Position&) const = default;
 };
 
 // Update a position given a character. Rules are:
