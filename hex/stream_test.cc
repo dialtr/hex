@@ -34,9 +34,21 @@ TEST(StreamTest, PeekDoesNotAdvanceStream) {
   EXPECT_TRUE(result.ok());
   auto stream = result.value();
   const char p1 = stream->Peek();
+
   EXPECT_EQ('a', p1);
   const char p2 = stream->Peek();
   EXPECT_EQ('a', p2);
+}
+
+TEST(StreamTest, PeekDoesNotAdvancePosition) {
+  auto result = Stream::OpenString("a");
+  EXPECT_TRUE(result.ok());
+  auto stream = result.value();
+  const Position p1 = stream->CurrentPosition();
+  const char c = stream->Peek();
+  EXPECT_EQ('a', c);
+  const Position p2 = stream->CurrentPosition();
+  EXPECT_EQ(p1, p2);
 }
 
 TEST(StreamTest, NextAdvancesStream) {
