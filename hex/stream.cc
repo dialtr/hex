@@ -44,7 +44,6 @@ char Stream::Peek() {
   if (ch == EOF) {
     return '\0';
   }
-  UpdatePosition(&position_, ch);
   return static_cast<char>(ch);
 }
 
