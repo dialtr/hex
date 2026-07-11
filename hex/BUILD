@@ -96,6 +96,9 @@ cc_test(
 cc_test(
   name = "stream_test",
   srcs = ["stream_test.cc"],
+  data = [
+    "testdata/abc.txt"
+  ],
   deps = [
     ":position",
     ":stream",

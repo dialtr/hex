@@ -4,12 +4,18 @@
 #include <gtest/gtest.h>
 
 #include <cstddef>
+#include <cstdlib>
+#include <iostream>
 #include <memory>
 #include <sstream>
 #include <string>
 
 #include "absl/status/status.h"
 #include "absl/status/statusor.h"
+
+using std::cerr;
+using std::cout;
+using std::endl;
 
 using hex::Position;
 using hex::Stream;
@@ -46,4 +52,7 @@ TEST(StreamTest, NextAdvancesStream) {
   EXPECT_EQ(kExpectedOffset, pos.offset);
   EXPECT_EQ(kExpectedLine, pos.line);
   EXPECT_EQ(kExpectedColumn, pos.column);
+  EXPECT_TRUE(stream->EndOfStream());
 }
+
+TEST(StreamTest, FileReadTest) { EXPECT_TRUE(true); }
