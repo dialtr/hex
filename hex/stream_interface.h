@@ -5,14 +5,9 @@
 #include <cstddef>
 #include <string>
 
-namespace hex {
+#include "hex/position.h"
 
-// Position in a stream, tracking file offset, line and column.
-struct Position {
-  size_t offset = 0;
-  size_t line = 1;
-  size_t column = 1;
-};
+namespace hex {
 
 // Character stream interface.
 class StreamInterface {

@@ -25,6 +25,15 @@ cc_library(
 )
 
 cc_library(
+  name = "position",
+  hdrs = [ "position.h" ],
+  srcs = [ "position.cc" ],
+  deps = [
+    "@abseil-cpp//absl/log:check",
+  ],
+)
+
+cc_library(
   name = "stream",
   hdrs = [
     "stream.h",
@@ -37,6 +46,7 @@ cc_library(
     "@abseil-cpp//absl/log:check",
     "@abseil-cpp//absl/status:status",
     "@abseil-cpp//absl/status:statusor",
+    ":position",
   ],
 )
 
@@ -51,6 +61,16 @@ cc_library(
     ":read_utility",
     ":record",
   ],
+)
+
+cc_test(
+  name = "position_test",
+  srcs = ["position_test.cc"],
+  deps = [
+    ":position",
+    "@googletest//:gtest_main",
+  ],
+  timeout = "short",
 )
 
 cc_test(

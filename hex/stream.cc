@@ -10,6 +10,7 @@
 #include "absl/log/check.h"
 #include "absl/status/status.h"
 #include "absl/status/statusor.h"
+#include "hex/position.h"
 
 namespace hex {
 
@@ -37,9 +38,23 @@ Stream::~Stream() { delete stream_; }
 
 Position Stream::CurrentPosition() const { return position_; }
 
-char Stream::Peek() { return '\0'; }
+char Stream::Peek() {
+  const int ch = stream_->peek();
+  if (ch == EOF) {
+    return '\0';
+  }
+  UpdatePosition(&position_, ch);
+  return static_cast<char>(ch);
+}
 
-char Stream::Next() { return '\0'; }
+char Stream::Next() {
+  const int ch = stream_->get();
+  if (ch == EOF) {
+    return '\0';
+  }
+  UpdatePosition(&position_, ch);
+  return static_cast<char>(ch);
+}
 
 bool Stream::EndOfStream() { return true; }
 

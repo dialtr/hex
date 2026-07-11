@@ -8,6 +8,7 @@
 #include <string>
 
 #include "absl/status/statusor.h"
+#include "hex/position.h"
 #include "hex/stream_interface.h"
 
 namespace hex {
