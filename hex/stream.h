@@ -26,8 +26,9 @@ class Stream : public StreamInterface {
   Stream& operator=(Stream&&) = delete;
 
   // Open a stream given a path to a file, or a string containing chars.
-  static absl::StatusOr<std::shared_ptr<Stream>> Open(const char* path);
-  static absl::StatusOr<std::shared_ptr<Stream>> Open(const std::string& s);
+  static absl::StatusOr<std::shared_ptr<Stream>> OpenFile(const char* path);
+  static absl::StatusOr<std::shared_ptr<Stream>> OpenString(
+      const std::string& s);
 
   ~Stream() override;
 

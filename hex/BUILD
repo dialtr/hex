@@ -97,6 +97,7 @@ cc_test(
   name = "stream_test",
   srcs = ["stream_test.cc"],
   deps = [
+    ":position",
     ":stream",
     "@googletest//:gtest_main",
   ],
