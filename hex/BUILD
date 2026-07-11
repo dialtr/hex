@@ -34,6 +34,7 @@ cc_library(
     "stream.cc"
   ],
   deps = [
+    "@abseil-cpp//absl/log:check",
     "@abseil-cpp//absl/status:status",
     "@abseil-cpp//absl/status:statusor",
   ],

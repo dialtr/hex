@@ -3,14 +3,15 @@
 #define HEX_STREAM_INTERFACE_H_
 
 #include <cstddef>
+#include <string>
 
 namespace hex {
 
 // Position in a stream, tracking file offset, line and column.
 struct Position {
-  size_t offset;
-  size_t line;
-  size_t column;
+  size_t offset = 0;
+  size_t line = 1;
+  size_t column = 1;
 };
 
 // Character stream interface.
@@ -18,13 +19,15 @@ class StreamInterface {
  public:
   virtual ~StreamInterface() {}
 
-  // Return the current position in the stream.
+  // Return the current position (offset, line, column) of stream.
+  // A subsequent call to Peek() or Next() will return the character
+  // that resides at this position.
   virtual Position CurrentPosition() const = 0;
 
-  // Peek the next character from the stream without advancing the position.
+  // Peek the character at the current position without advancing.
   virtual char Peek() = 0;
 
-  // Read the next character from the stream, advancing the position.
+  // Read the character at the current position and advance to the next.
   virtual char Next() = 0;
 
   // Returns true if the end of the stream has been reached.
