@@ -103,6 +103,7 @@ cc_test(
     ":position",
     ":stream",
     "@googletest//:gtest_main",
+    "@bazel_tools//tools/cpp/runfiles",
   ],
   timeout = "short",
 )

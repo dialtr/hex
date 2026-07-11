@@ -17,7 +17,7 @@ namespace hex {
 // Open file.
 absl::StatusOr<std::shared_ptr<Stream>> Stream::OpenFile(const char* path) {
   DCHECK(path != nullptr) << "Stream::Open(): path was null";
-  std::fstream* stream = new std::fstream(path);
+  std::ifstream* stream = new std::ifstream(path);
   if (!stream->is_open()) {
     delete stream;
     return absl::ErrnoToStatus(errno, "failed to  open file stream");
