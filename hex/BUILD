@@ -1,6 +1,16 @@
 load("@rules_cc//cc:defs.bzl", "cc_test", "cc_library", "cc_binary")
 
 cc_library(
+  name = "memory_stream",
+  hdrs = [ "memory_stream.h" ],
+  srcs = [ "memory_stream.cc" ],
+  deps = [
+    ":position",
+    ":stream",
+  ],
+)
+
+cc_library(
   name = "read_utility",
   hdrs = [ "read_utility.h" ],
   srcs = [ "read_utility.cc" ],
