@@ -14,7 +14,7 @@ namespace hex {
 
 class MemoryStream : public StreamInterface {
  public:
-  MemoryStream(void* buf, size_t len);
+  MemoryStream(const char* buf, size_t len);
 
   // Copy, assignment not allowed.
   MemoryStream(const MemoryStream&) = delete;
@@ -37,7 +37,7 @@ class MemoryStream : public StreamInterface {
   bool EndOfStream() override;
 
  private:
-  char* buf_;
+  const char* buf_;
   size_t len_;
   Position position_;
 };

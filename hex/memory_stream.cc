@@ -11,29 +11,33 @@
 
 namespace hex {
 
-MemoryStream::MemoryStream(void* buf, size_t len)
-    : buf_(reinterpret_cast<char*>(buf)), len_(len) {}
+MemoryStream::MemoryStream(const char* buf, size_t len)
+    : buf_(buf), len_(len) {}
 
 MemoryStream::~MemoryStream() {}
 
 // Return the current position in the stream.
-Position MemoryStream::CurrentPosition() const { return Position{}; }
+Position MemoryStream::CurrentPosition() const { return position_; }
 
 // Peek character at the current position without advancing.
-char MemoryStream::Peek() { return 0; }
+char MemoryStream::Peek() {
+  if (EndOfStream()) {
+    return 0;
+  }
+  return buf_[position_.offset];
+}
 
 // Read character at the current position and advance to the next.
-char MemoryStream::Next() { return 0; }
+char MemoryStream::Next() {
+  if (EndOfStream()) {
+    return 0;
+  }
+  const char c = buf_[position_.offset];
+  UpdatePosition(&position_, c);
+  return c;
+}
 
 // Return 'true' if we've reached the end of the stream.
-bool MemoryStream::EndOfStream() { return true; }
-
-/*
- private:
-  char* buf_;
-  size_t len_;
-  Position position_;
-};
-*/
+bool MemoryStream::EndOfStream() { return (position_.offset >= len_); }
 
 }  // namespace hex

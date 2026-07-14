@@ -60,6 +60,18 @@ cc_library(
   ],
 )
 
+cc_test(
+  name = "memory_stream_test",
+  srcs = ["memory_stream_test.cc"],
+  deps = [
+    ":position",
+    ":stream",
+    ":memory_stream",
+    "@googletest//:gtest_main",
+  ],
+  timeout = "short",
+)
+
 cc_library(
   visibility = [ "//visibility:public" ],
   name = "hex",
